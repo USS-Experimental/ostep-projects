@@ -8,21 +8,21 @@ void grep(char *buffer, char *keyword);
 
 int main(int argc, char *argv[])
 {
-    if (argc < 2)
+    if (argc < 2) // Check the command line input
     {
         printf("wgrep: searchterm [file ...]\n");
         exit(EXIT_FAILURE);
     }
-    else if (argc == 2)
+    else if (argc == 2) // Only gives search term
     {
         char *keyword = argv[1];
         char buffer[BUFSIZE];
         while (fgets(buffer, BUFSIZE, stdin) != NULL)
         {
-            grep(buffer, keyword);
+            grep(buffer, keyword); // Find the string and print the line
         }
     }
-    else
+    else // Gives search term and filenames
     {
         for (size_t i = 2; i < argc; i++)
         {
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
             size_t len = 0;
             while (getline(&buffer, &len, fp) != -1)
             {
-                grep(buffer, keyword);
+                grep(buffer, keyword); // Find the string and print the line
             }
 
             fclose(fp);

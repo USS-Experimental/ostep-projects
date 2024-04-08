@@ -7,11 +7,13 @@ void cat(FILE *fp);
 
 int main(int argc, char *argv[])
 {
+    // Check the command line input, return 0 when no files are specified
     if (argc < 2)
     {
         return 0;
     }
     
+    // Read each filename in argv[]
     for (size_t i = 1; i < argc; i++)
     {
         FILE *fp = fopen(argv[i], "r");
@@ -21,7 +23,7 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        cat(fp);
+        cat(fp); // Read and print every lines in file
 
         fclose(fp);
     }
